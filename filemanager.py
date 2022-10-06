@@ -357,7 +357,7 @@ def edit_file():
 
     #content = util.read_file(os_file_path).decode()
     #content = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-    content = SupportFile.read(os_file_path)
+    content = SupportFile.read_file(os_file_path)
     return get_file(path=path, content=content)
 
 
