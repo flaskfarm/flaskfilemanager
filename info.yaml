@@ -1,0 +1,14 @@
+title: "파일 매니저"
+version: "1.0.0"
+package_name: "flaskfilemanager"
+developer: "TEAM"
+description': "RichFilemanager를 Flask에서 동작하도록 한 FlaskFileManager 포크"
+home: "https://github.com/flaskfarm/flaskfilemanager"
+more: "https://raw.githubusercontent.com/flaskfarm/flaskfilemanager/main/README.md"
+
+require_plugin:
+require_os: 
+require_running_type: 
+need_decrypt_code: false
+need_filesize_check': false
+filesize: 0

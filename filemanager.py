@@ -2,20 +2,23 @@
 Main filemanager package - contains blueprint
 """
 
-import logging
-import json
-import os
-from collections import OrderedDict
 import datetime
 import io
+import json
+import logging
+import os
+from collections import OrderedDict
 
-from flask import Blueprint, request, make_response, send_from_directory, abort, url_for, render_template
+from flask import (Blueprint, abort, make_response, render_template, request,
+                   send_from_directory, url_for)
+
 #from littlefish import util, imageutil
 
 
 __author__ = 'Stephen Brown (Little Fish Solutions LTD)'
 
 from framework import get_logger
+
 log = get_logger(__package__)
 
 
@@ -134,6 +137,8 @@ def get_url_path(path):
     return url_for('flaskfilemanager.userfile', filename='') + path.lstrip('/')
 
 from flask_login import login_required
+
+
 @filemanager_blueprint.route('/')
 @filemanager_blueprint.route('/index.html')
 @login_required
@@ -180,10 +185,8 @@ def connector():
     if _access_control_function and not _access_control_function():
         abort(404)
 
-    log.debug(request.args)
-
+    #log.debug(request.args)
     mode = request.args.get('mode')
-
     resp = None
     
     if mode == 'initiate':
@@ -350,11 +353,11 @@ def edit_file():
     os_file_path = web_path_to_os_path(path)
     
     # Load the contents of the file
-    from tool_base import ToolBaseFile
+    from support import SupportFile
 
     #content = util.read_file(os_file_path).decode()
     #content = 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-    content = ToolBaseFile.read(os_file_path)
+    content = SupportFile.read(os_file_path)
     return get_file(path=path, content=content)
 
 

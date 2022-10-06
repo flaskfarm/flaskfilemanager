@@ -1,1 +1,1 @@
-# flaskfilemanager
+This is https://github.com/stevelittlefish/flaskfilemanager fork version and is a plugin that has been partially modified to run on FlaskFarm
