@@ -1,7 +1,17 @@
+import os
 __menu = {
     'uri': __package__,
     'name': '파일 매니저',
 }
+
+try:
+    import flaskcode
+    __setting_menu = {
+        'uri': f"flaskcode?open={os.path.join(os.path.dirname(__file__), 'RichFilemanager', 'config', 'filemanager.config.json')}",
+        'name': '파일매니저 설정',
+    }
+except: 
+    __setting_menu = None
 
 setting = {
     'filepath' : __file__,
@@ -9,7 +19,7 @@ setting = {
     'use_default_setting': False,
     'home_module': None,
     'menu': __menu,
-    'setting_menu': None,
+    'setting_menu': __setting_menu,
     'default_route': None,
 }
 
