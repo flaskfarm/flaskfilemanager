@@ -21,7 +21,7 @@ class ModuleBase(PluginModuleBase):
 
         #app.config['FLASKFILEMANAGER_FILE_PATH'] = path_app_root
         F.app.config['FLASKFILEMANAGER_FILE_PATH'] = '/'
-        init(F.app)
+        init(F.app, register_blueprint=False)
 
     def plugin_unload(self):
         pass
