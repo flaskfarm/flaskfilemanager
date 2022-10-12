@@ -21,6 +21,8 @@ class ModuleBase(PluginModuleBase):
 
         #app.config['FLASKFILEMANAGER_FILE_PATH'] = path_app_root
         F.app.config['FLASKFILEMANAGER_FILE_PATH'] = '/'
+        if F.config['running_type'] == 'termux':
+            F.app.config['FLASKFILEMANAGER_FILE_PATH'] = '/data/data/com.termux/files/home'
         init(F.app, register_blueprint=False)
 
     def plugin_unload(self):
