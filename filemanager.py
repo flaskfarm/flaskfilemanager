@@ -209,11 +209,14 @@ def connector():
     elif mode == 'delete':
         resp = delete_file()
     elif mode == 'download':
+        return download_file()
+        """
         if request.is_xhr:
             # This is really stupid - I don't get why it does this!
             resp = get_file()
         else:
             return download_file()
+        """
     elif mode == 'getimage':
         return get_image()
     elif mode == 'readfile':
