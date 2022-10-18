@@ -209,7 +209,10 @@ def connector():
     elif mode == 'delete':
         resp = delete_file()
     elif mode == 'download':
-        return download_file()
+        if request.headers.get("X-Requested-With") == 'XMLHttpRequest':
+            resp = get_file()
+        else:
+            return download_file()
         """
         if request.is_xhr:
             # This is really stupid - I don't get why it does this!
@@ -653,9 +656,6 @@ def download_file():
         #return 'TODO: download directory as zip'
     else:
         pass
-    #print(_FILE_PATH)
-    #print(web_path)
-    #print(web_path_to_local(web_path))
     return send_from_directory(_FILE_PATH, web_path_to_local(web_path), as_attachment=True)
 
 
