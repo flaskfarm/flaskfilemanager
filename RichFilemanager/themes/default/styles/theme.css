@@ -103,3 +103,7 @@
 .fm-container .drag-helper-grid {
     width: 142px;
 }
+
+.fm-container .view-items table {
+    color: #000;
+}
