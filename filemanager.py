@@ -7,6 +7,7 @@ import io
 import json
 import logging
 import os
+import shutil
 from collections import OrderedDict
 
 from flask import (Blueprint, abort, make_response, render_template, request,
@@ -483,11 +484,9 @@ def copy_file():
     # Looks like we're good to go!
     try:
         if os.path.isdir(os_old_path):
-            import framework.common.celery as celery_task
-            celery_task.copytree(os_old_path, os_new_path)
+            shutil.copytree(os_old_path, os_new_path)
         else:
-            import framework.common.celery as celery_task
-            celery_task.copy(os_old_path, os_new_path)
+            shutil.copy(os_old_path, os_new_path)
     except Exception as e:
         return error('Operation failed: %s' % e)
 
@@ -626,8 +625,7 @@ def delete_file():
     if os.path.isdir(os_path):
         try:
             log.info('Deleting directory: {}'.format(os_path))
-            import framework.common.celery as celery_task
-            celery_task.rmtree(os_path)
+            shutil.rmtree(os_path)
         except Exception as e:
             return error('Operation failed: %s' % e)
     else:
